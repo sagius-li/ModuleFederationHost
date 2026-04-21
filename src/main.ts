@@ -1,7 +1,8 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
+import { initFederation } from '@angular-architects/native-federation';
 
-platformBrowserDynamic().bootstrapModule(AppModule, {
-  ngZoneEventCoalescing: true,
+initFederation({
+  remote: '/remotes/remote/browser/remoteEntry.json'
 })
+  .catch(err => console.error(err))
+  .then(_ => import('./bootstrap'))
   .catch(err => console.error(err));

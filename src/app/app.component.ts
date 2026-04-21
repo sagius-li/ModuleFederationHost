@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'mf_host';
+  title = 'Module Federation Host';
 }

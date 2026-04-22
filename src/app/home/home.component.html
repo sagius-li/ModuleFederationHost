@@ -1,0 +1,6 @@
+<ng-container *ngIf="remoteApp; else errorTemplate">
+  <ng-container *ngComponentOutlet="remoteApp"></ng-container>
+</ng-container>
+<ng-template #errorTemplate>
+  <p *ngIf="loadError">Remote widget failed to load.</p>
+</ng-template>

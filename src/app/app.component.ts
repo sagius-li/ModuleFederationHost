@@ -1,6 +1,4 @@
-import { Component, OnInit, Type } from '@angular/core';
-
-import { loadRemoteModule } from "@angular-architects/native-federation";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,23 +6,6 @@ import { loadRemoteModule } from "@angular-architects/native-federation";
   standalone: false,
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Module Federation Host';
-
-  loadError = false;
-
-  remoteApp: Type<unknown> | null = null;
-
-  async ngOnInit() {
-    try {
-      const remoteModule = await loadRemoteModule({
-        remoteName: 'remote',
-        exposedModule: './RemoteApp'
-      })
-      this.remoteApp = remoteModule.AppComponent;
-    } catch (err) {
-      console.log('Failed to load remote component', err);
-      this.loadError = true;
-    }
-  }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit, Type } from '@angular/core';
 
 import { loadRemoteModule } from "@angular-architects/native-federation";
 
+import { UtilsService } from '../core/services/utils.service';
+
 @Component({
   selector: 'app-home',
   standalone: false,
@@ -13,7 +15,10 @@ export class HomeComponent implements OnInit {
 
   remoteApp: Type<unknown> | null = null;
 
+  constructor(private utils: UtilsService) { }
+
   async ngOnInit() {
+    this.utils.log('HomeComponent initialized');
     try {
       const remoteModule = await loadRemoteModule({
         remoteName: 'remote',

@@ -1,8 +1,17 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { UtilsService } from './services/utils.service';
+import { TitleBarComponent } from './components/title-bar/title-bar.component';
 
-@NgModule()
+@NgModule({
+  declarations: [
+    TitleBarComponent
+  ],
+  imports: [],
+  exports: [
+    TitleBarComponent
+  ]
+})
 export class CoreModule {
   // constructor(@Optional() @SkipSelf() parentModule?: CoreModule) {
   //   if (parentModule) {

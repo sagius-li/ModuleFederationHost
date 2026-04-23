@@ -1,4 +1,5 @@
 <h3>{{ state.message }}</h3>
+<app-title-bar #titleBar></app-title-bar>
 <ng-container *ngIf="remoteApp; else errorTemplate">
   <ng-container *ngComponentOutlet="remoteApp"></ng-container>
 </ng-container>

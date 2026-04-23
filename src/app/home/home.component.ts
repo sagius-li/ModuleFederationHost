@@ -1,8 +1,9 @@
-import { Component, OnInit, Type } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Type, ViewChild } from '@angular/core';
 
 import { loadRemoteModule } from "@angular-architects/native-federation";
 
 import { UtilsService } from '../core/services/utils.service';
+import { TitleBarComponent } from '../core/components/title-bar/title-bar.component';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,10 @@ import { UtilsService } from '../core/services/utils.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
+  @ViewChild('titleBar')
+  titleBar?: TitleBarComponent;
+
   loadError = false;
 
   state = { message: 'Welcome to the Host Home' };
@@ -27,16 +31,20 @@ export class HomeComponent implements OnInit {
         exposedModule: './RemoteApp'
       })
       this.remoteApp = remoteModule.AppComponent;
+    } catch (err) {
+      console.log('Failed to load remote component', err);
+      this.loadError = true;
+    }
+  }
 
+  async ngAfterViewInit() {
+    if (this.titleBar) {
       const remoteUtilsService = await loadRemoteModule({
         remoteName: 'remote',
         exposedModule: './RemoteUtilsService'
       });
       const remoteUtils = new remoteUtilsService.RemoteUtilsService();
-      remoteUtils.brandMessage(this.state);
-    } catch (err) {
-      console.log('Failed to load remote component', err);
-      this.loadError = true;
+      remoteUtils.brandTitle(this.titleBar);
     }
   }
 }

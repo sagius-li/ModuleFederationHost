@@ -16,11 +16,11 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'remote-page',
-    loadComponent: () => loadRemoteModule({
+    path: 'remote',
+    loadChildren: () => loadRemoteModule({
       remoteName: 'remote',
-      exposedModule: './RemotePage'
-    }).then(m => m.PageComponent)
+      exposedModule: './RemoteRoutes'
+    }).then(m => m.REMOTE_ROUTES)
   }
 ];
 

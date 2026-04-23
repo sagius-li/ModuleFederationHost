@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   state = { message: 'Welcome to the Host Home' };
 
-  remoteApp: Type<unknown> | null = null;
+  widget: Type<unknown> | null = null;
 
   constructor(private utils: UtilsService) { }
 
@@ -28,9 +28,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     try {
       const remoteModule = await loadRemoteModule({
         remoteName: 'remote',
-        exposedModule: './RemoteApp'
+        exposedModule: './RemoteWidget'
       })
-      this.remoteApp = remoteModule.AppComponent;
+      this.widget = remoteModule.WidgetComponent;
     } catch (err) {
       console.log('Failed to load remote component', err);
       this.loadError = true;

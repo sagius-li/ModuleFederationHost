@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { SharedCoreModule, UtilsService } from "mf-shared-core";
+
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -13,10 +15,13 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedCoreModule
   ],
-  providers: [],
+  exports: [
+    SharedCoreModule
+  ],
+  providers: [UtilsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

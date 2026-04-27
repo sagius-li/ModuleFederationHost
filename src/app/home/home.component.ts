@@ -2,8 +2,8 @@ import { AfterViewInit, Component, OnInit, Type, ViewChild } from '@angular/core
 
 import { loadRemoteModule } from "@angular-architects/native-federation";
 
-import { UtilsService } from '../core/services/utils.service';
-import { TitleBarComponent } from '../core/components/title-bar/title-bar.component';
+import { TitleBarComponent } from "mf-shared-core";
+import { UtilsService } from "mf-shared-core";
 
 @Component({
   selector: 'app-home',

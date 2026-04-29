@@ -19,6 +19,8 @@
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
+    "@angular/cdk": "19.2.19",
+    "@angular/material": "19.2.19",
     "@softarc/native-federation-node": "^2.0.10",
     "mf-shared-core": "file:../mf_shared/dist/shared-core",
     "es-module-shims": "^1.5.12",

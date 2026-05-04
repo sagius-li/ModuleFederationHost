@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:shared-source": "DEBUG_SHARED_SOURCE=true ng serve --configuration shared-source",
     "build": "ng build",
+    "build:shared-source": "DEBUG_SHARED_SOURCE=true ng build --configuration shared-source",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "rootDir": "..",
+    "baseUrl": ".",
+    "paths": {
+      "mf-shared-core": ["../mf_shared/projects/shared-core/src/public-api.ts"]
+    }
+  },
+  "include": ["src/**/*.ts", "../mf_shared/projects/shared-core/src/**/*.ts"]
+}

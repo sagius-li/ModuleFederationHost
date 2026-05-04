@@ -1,13 +1,16 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.app.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/app",
-    "types": []
+    "rootDir": "..",
+    "baseUrl": ".",
+    "paths": {
+      "mf-shared-core": [
+        "../mf_shared/projects/shared-core/src/public-api.ts"
+      ]
+    }
   },
-  "files": [
-    "src/main.ts"
-  ],
   "include": [
-    "src/**/*.d.ts"
+    "src/**/*.ts",
+    "../mf_shared/projects/shared-core/src/**/*.ts"
   ]
 }

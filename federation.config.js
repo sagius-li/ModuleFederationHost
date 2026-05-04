@@ -1,32 +1,44 @@
 const {
   withNativeFederation,
   shareAll,
+  DEFAULT_SKIP_LIST,
 } = require("@angular-architects/native-federation/config");
+
+const debugSharedSource = process.env.DEBUG_SHARED_SOURCE === "true";
+const skip = [
+  ...DEFAULT_SKIP_LIST,
+  "rxjs/ajax",
+  "rxjs/fetch",
+  "rxjs/testing",
+  "rxjs/webSocket",
+  ...(debugSharedSource ? ["mf-shared-core"] : []),
+];
 
 module.exports = withNativeFederation({
   name: "host",
 
   shared: {
-    ...shareAll({
-      singleton: true,
-      strictVersion: true,
-      requiredVersion: "auto",
-    }),
+    ...shareAll(
+      {
+        singleton: true,
+        strictVersion: true,
+        requiredVersion: "auto",
+      },
+      skip
+    ),
 
-    "mf-shared-core": {
-      singleton: true,
-      strictVersion: true,
-      requiredVersion: "auto",
-    },
+    ...(debugSharedSource
+      ? {}
+      : {
+          "mf-shared-core": {
+            singleton: true,
+            strictVersion: true,
+            requiredVersion: "auto",
+          },
+        }),
   },
 
-  skip: [
-    "rxjs/ajax",
-    "rxjs/fetch",
-    "rxjs/testing",
-    "rxjs/webSocket",
-    // Add further packages you don't need at runtime
-  ],
+  skip,
 
   // Please read our FAQ about sharing libs:
   // https://shorturl.at/jmzH0
